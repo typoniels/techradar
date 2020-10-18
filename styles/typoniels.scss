@@ -1,0 +1,148 @@
+:root {
+  --color-brand-one: #004355;
+}
+
+a {
+  word-wrap: break-word;
+}
+
+body {
+
+}
+
+.branding__logo a:hover {
+  color: var(--color-white);
+}
+
+h1.fullpage-headline {
+  font-size: 2.3rem;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--color-darkblue);
+
+  small {
+    color: var(--color-darkblue);
+    font-weight: normal;
+    font-size: 60%;
+  }
+}
+
+.footer-wrapper {
+  padding: 15px 0;
+}
+
+.landing-intro {
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+
+  .col {
+    flex: 1
+  }
+  .fullpage-headline-col {
+    padding: 20px 0;
+    flex-shrink: 1;
+  }
+}
+
+hr {
+  height: 10px;
+  background: linear-gradient(to left, #004357, red);
+  border: none;
+}
+
+
+.cta-button-block {
+  background: var(--color-brand-one);
+  color: var(--color-white);
+  padding: 2rem;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0 0;
+
+  &:hover {
+    background: var(--color-darkblue);
+  }
+}
+
+.fullpage-content-wrapper {
+
+}
+
+.textsplitt {
+  columns: 2 auto;
+  column-gap: 20px;
+
+  line-height: 150%;
+}
+
+.textblock {
+  font-size: 1.2rem;
+  line-height: 150%;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.typoniels_page {
+
+
+  &__header-wrapper {
+    background: var(--color-brand-one);
+    padding: 10px 0;
+  }
+
+  &__header {
+    // max-width: 1300px;
+    margin: 0 auto;
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 100;
+  }
+
+  &__content-wrapper {
+    //padding: 10px 0;
+  }
+
+  &__content {
+    // max-width: 1300px;
+    margin: 0 auto;
+  }
+}
+
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.footer-wrapper {
+  // background: color(var(--color-brand-one) tint(15%));
+}
+
+.footer {
+  display: block;
+}
+
+.bg-dark a {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+.small, small {
+   white-space: normal;
+   overflow: visible;
+   display: block;
+   text-overflow: initial;
+   line-height: 1.5!important;
+}
+
+.technology-list {
+  li {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

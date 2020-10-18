@@ -1,0 +1,31 @@
+.split {
+  display: flex;
+  /*align-items: center;*/
+  justify-content: space-between;
+
+  &--align-top {
+    align-items: flex-start;
+  }
+
+  &--overview {
+    min-height: 40px;
+  }
+
+  &__left {
+    flex: 0 1 auto;
+  }
+
+  &__right {
+    flex: 0 1 auto;
+    margin-top: 0;
+    white-space: nowrap;
+
+    @media (--until-sm) {
+      margin-bottom: 20px;
+    }
+  }
+
+   @media (--until-sm) {
+     display: block;
+   }
+}

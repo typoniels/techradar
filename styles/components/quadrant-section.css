@@ -1,0 +1,23 @@
+.quadrant-section {
+  &__header {
+    /*margin-bottom: 20px;*/
+  }
+
+  &__rings {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__ring {
+    box-sizing: border-box;
+    padding: 0;
+    flex: 0 0 33.3337%;
+    /*margin: 0 0 25px;*/
+    @media (--until-md) {
+      flex-basis: 50%;
+    }
+    @media (--until-sm) {
+      flex-basis: 100% !important;
+    }
+  }
+}

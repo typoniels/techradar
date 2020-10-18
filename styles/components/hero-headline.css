@@ -1,0 +1,30 @@
+.hero-headline {
+  font-size: 1.9rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-darkblue);
+  padding: 0;
+  margin: 0;
+
+  @media (--until-lg) {
+    hyphens: auto;
+    hyphenate-limit-chars: auto 5;
+    hyphenate-limit-lines: 2;
+  }
+
+  &__alt {
+    color: var(--color-gray-light);
+  }
+
+  &--inverse {
+    color: var(--color-gray-light);
+    margin-bottom: 20px;
+  }
+
+  @media (--until-sm) {
+    font-size: 26px;
+    &__alt {
+      display: block;
+    }
+  }
+}
