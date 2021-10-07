@@ -1,0 +1,80 @@
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "fonts";
+
+// Variablen
+$brandcolor-one: #004667;
+$brandcolor-two: #004667;
+$brandcolor-three: #004667;
+$bg-gradient-two: #e5bf00;
+$bg-gradient-one: #003045;
+$bg-gradient-three: #bfb500;
+
+@import "~@tailwindcss/forms/dist/forms.min.css";
+
+// My Styles
+@import "helpers";
+// @import "typografie";
+// @import "_refactor/t3-content";
+@import "components/index";
+@import "listings/index";
+@import "detail/index";
+@import "darkmode";
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: .8em 0;
+  padding: 0.5em 10px;
+  font-size: 1.4em;
+  line-height: 130%;
+
+  //&:before {
+  //  color: #ccc;
+  //  content: open-quote;
+  //  font-size: 4em;
+  //  line-height: 0.1em;
+  //  margin-right: 0.25em;
+  //  vertical-align: -0.4em;
+  //}
+
+  p {
+    display: inline;
+  }
+}
+
+body.dark {
+  blockquote {
+    background: #2d2d2d;
+  }
+}
+
+.main-content {
+  a {
+    word-break: break-all;
+  }
+}
+
+
+.main-content ul {
+  list-style-type: square;
+  line-height: 1.2;
+  padding-left: 1em;
+  list-style-position: outside;
+
+  li {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+
+.main-content img {
+  margin: 1rem 0;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 20px -16px $brandcolor-one;
+}

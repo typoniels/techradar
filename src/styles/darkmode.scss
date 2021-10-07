@@ -1,0 +1,103 @@
+.darkmode-button {
+  input[type="checkbox"] {
+    display: none;
+
+    + label {
+      $time: 300ms;
+      display: block;
+      width: 140px;
+      height: 40px;
+      background-color: $brandcolor-one;
+      transition: all $time cubic-bezier(0.79, -0.01, 0.36, 1);
+      cursor: pointer;
+      position: relative;
+
+      span {
+        position: absolute;
+        font-size: 14px;
+      }
+
+      span.tagmodus {
+        top: 50%;
+        transform: translateY(-50%);
+        color: theme('colors.gray.800');
+        right: 2em;
+        display: none;
+        animation: right-check 300ms ease-in-out;
+        @keyframes left-check {
+          0% {
+            opacity: 0;
+            right: 5em;
+          }
+          100% {
+            opacity: 1;
+            right: 1.3em;
+          }
+        }
+      }
+
+      span.nachtmodus {
+        top: 50%;
+        // color: #00b2c6;
+        transform: translateY(-50%);
+        color: white;
+        left: 2.3em;
+        @keyframes left-check {
+          0% {
+            opacity: 0;
+            left: 5em;
+          }
+          100% {
+            opacity: 1;
+            left: 2.5em;
+          }
+        }
+      }
+
+      &:before {
+        display: block;
+        content: "\f186";
+        font-family: "Font Awesome 5 Free";
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        background-color: #262626;
+        color: white;
+        box-shadow: 0 0 25px -3px rgba(0, 0, 0, 0.4);
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 6.5em;
+        transition: left $time cubic-bezier(0.79, -0.01, 0.36, 1);
+      }
+    }
+
+    &:checked {
+      + label {
+        background-color: #eeeeee;
+
+        span.nachtmodus {
+          display: none;
+        }
+
+        span.tagmodus {
+          display: block;
+        }
+
+        &:before {
+          left: 8px;
+          content: "\f0eb";
+          color: theme('colors.white');
+          background: theme('colors.yellow.500');
+        }
+      }
+    }
+  }
+}
+
+body.dark {
+  -webkit-font-smoothing: antialiased;
+  background: theme('colors.gray.900');
+}

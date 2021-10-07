@@ -1,0 +1,35 @@
+.footer-wrapper {
+  /* border-top: 1px solid var(--color-gray-normal); */
+  transition: opacity 450ms cubic-bezier(0.24, 1.12, 0.71, 0.98) 1500ms;
+  opacity: 1;
+  backface-visibility: hidden;
+  .footer {
+    max-width: 1300px;
+    margin: 0 auto;
+
+
+
+
+  &-link {
+  color: var(--color-darkblue);
+  text-decoration: none;
+   }
+    p {
+      color: var(--color-darkblue);
+    }
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    transition-delay: 0s;
+  }
+}
+
+
+.branding--footer .branding__logo {
+  filter: invert(1) brightness(400);
+}
+
+.footer a {
+  color: var(--color-darkblue);
+}

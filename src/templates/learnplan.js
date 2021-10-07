@@ -1,0 +1,271 @@
+import React from "react"
+import {graphql, Link} from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Img from "gatsby-image"
+import UnderWork from "../article-on-work"
+
+const LernplanTemplate = ({data, pageContext, location}) => {
+    const post = data.cockpitLeanplan
+    const {previous, next} = pageContext
+    const description = post.teaser ? post.teaser.value : post.title.value
+    const LevelStars = ({level}) => {
+        let Options = {
+            'Beginner': 1,
+            'Intermediate': 2,
+            'Advanced': 3,
+            'Very Advanced': 4,
+            'Expert': 5
+        };
+        let html = ''
+        let star = '<i class="fas fa-star fa-2x text-green-600 hover:scale-125 transition duration-500 ease-in-out transform"></i>'
+        for (let i = 0; i < Options[level]; i++) {
+            html += star
+        }
+        let instar = '<i class="fas fa-star fa-2x text-gray-300"></i>'
+        for (let i = 0; i < (Object.keys(Options).length - Options[level]); i++) {
+            html += instar
+        }
+        return (
+            <div className="dark:text-gray-300">
+                <div className="text-xl font-bold mb-3 dark:text-white">Mein Level</div>
+                <div className="gap-3 flex">
+                    <div dangerouslySetInnerHTML={{__html: html}} />
+                </div>
+            </div>
+        )
+    }
+
+    const LevelStatus = ({status}) => {
+        let Levels = {
+            'Adopt': {label: 'Wissensaufbau', class: 'bg-yellow-200', icon: 'fa-flask'},
+            'Trial': {label: 'Praxis-Evaluierung', class: 'bg-indigo-200', icon: 'fa-broom'},
+            'Assess': {label: 'Projekt-Integration', class: 'bg-blue-100', icon: 'fas fa-magic'},
+            'Hold': {label: 'Im Prozess etabliert', class: 'bg-green-600 text-white', icon: 'fa-check-circle'}
+        }
+        return (
+            <div className="">
+                <div className="text-xl font-bold mb-3 dark:text-white">Mein Status</div>
+                <div className={'inline-block text-lg px-5 py-3' + ' ' + Levels[status]['class']}>
+                    <i className={'pr-1 fa ' + Levels[status]['icon']}></i> {/* <span className={'uppercase'}>{status}:</span> */}{Levels[status]['label']}
+                </div>
+            </div>
+        )
+    }
+    return (
+        <Layout location={location} title={post.title.value} styleclass={'blog-post-stage'}>
+            <SEO title={post.title.value} description={description}/>
+            <div className={"niels-langlotz-blogpost"}>
+                <article className="niels-langlotz-blogpost_article">
+                    <div className="nl-blogpost-single_article-content">
+                        {post.media && (
+                            <div className="nl-blogpost-single_article-hero text-center mx-auto bg-red-600 w-full relative" style={post.mediabgcolor ? { backgroundColor: post.mediabgcolor.value} : { backgroundColor: 'transparent'}}>
+                                <Img className={'image-index blog-article-hero mx-auto'} fluid={post.media.value.childImageSharp.fluid} style={{maxHeight: '500px', maxWidth: '80rem'}}/>
+                            </div>
+                        )}
+                        <div className="bg-white dark:bg-gray-900">
+                            <div className="container content m-auto p-3">
+                                <div className="max-w-4xl mx-auto">
+                                    <header className={"text-center py-5" + (post.teaser ? '' : '')}>
+                                        <h1 className="text-3xl md:text-4xl font-bold text-gray-700 dark:text-gray-100 -font mt-0 mb-0 uppercase" style={{marginTop: ".5rem", marginBottom: 0}}>
+                                            {post.title.value}
+                                        </h1>
+                                        {post.subtitle &&
+                                        <h2 className="text-3xl text-gray-900 dark:text-gray-500 opacity-75">{post.subtitle.value}</h2>
+                                        }
+                                    </header>
+                                    {post.teaser &&
+                                        <div className="pb-3 text-xl tracking-wide subpixel-antialiased font-light leading-8 text-gray-500 dark:text-gray-400" style={{hyphens: "auto"}}>
+                                            {post.teaser.value}
+                                        </div>
+                                    }
+                                    
+                                    {post.tags &&
+                                    <div className="flex mb-5 justify-center flex-wrap">
+                                        {post.tags.value.map((tag) => {
+                                            return (
+                                                <div className="bg-gray-100 dark:bg-gray-800 dark:text-gray-300 text-gray-600 px-3 py-2 mr-1 mt-2 font-normal text-xs">
+                                                    <i className="fa fa-tags"></i> {tag}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="nl-blogpost-single_article-postbody-two bg-gray-100 bg-gradient-to-l dark:from-gray-800 dark:to-blue-980 p-4 py-5">
+                            <div className="container content m-auto p-3">
+                                <div className="max-w-4xl mx-auto">
+                                    <div className="grid justify-between items-center grid-cols-2 md:grid-cols-3 gap-3">
+                                        <div className="quadrant 2xl:justify-self-start">
+                                            <div className="text-xl font-bold mb-3 dark:text-white">Quadrant</div>
+                                            <div className="gap-3 flex dark:text-gray-300">
+                                                <i className="fas fa-th-large fa-2x"></i> <span className="text-2xl">{post.quadrant.value}</span>
+                                            </div>
+                                        </div>
+                                        {post.level && (
+                                            <div className="level 2xl:justify-self-center">
+                                                <LevelStars level={post.level.value}  />
+                                            </div>
+                                        )}
+                                        {post.status && (
+                                            <div className="status 2xl:justify-self-end hidden md:block">
+                                                <div className="max-w-4xl mx-auto">
+                                                    <LevelStatus status={post.status.value} />
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/*{(post.bodytext === undefined || post.bodytext === null) && (post.bodytext2 === undefined || post.bodytext2 === null) &&*/}
+                        {/*    <UnderWork type={'lernplan'} />*/}
+                        {/*}*/}
+                        {post.bodytext && (
+                            <div className="nl-blogpost-single_article-postbody-one bg-gray-50 dark:bg-blue-980 dark:text-white p-4 py-5">
+                                <div className="container content m-auto p-3">
+                                    <div className="max-w-4xl mx-auto">
+                                        <div
+                                            className="markdown-view text-lg text-gray-500"
+                                            dangerouslySetInnerHTML={{
+                                                __html: post.bodytext.value.childMarkdownRemark.html,
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        <div className="bg-gray-200 dark:bg-gray-800">
+                            <div className="content m-auto py-5">
+                                <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-8 md:items-center md:justify-between">
+                                    <div className="flex flex-col gap-4 sm:grid grid-cols-3 justify-between items-center">
+                                        <div className={'col-12 col-sm-4'}>
+                                            {previous &&
+                                            <div className="flex justify-start justify-content-sm-start hover:text-blue-900 dark:text-blue-100 dark:hover:text-white">
+                                                <Link className={'group text-light text-decoration-none flex items-center'}
+                                                      to={'/lernplan/' + (previous.slugadditional ? previous.title.slug + '-' + previous.slugadditional.slug : previous.title.slug)}>
+                                                    <i className={'fa fa-arrow-left text-gray-700 fa-2x mr-2 group-hover:text-blue-900 dark:text-blue-100 dark:group-hover:text-white'}/><span className="font-bold text-center">{previous.title.value}</span>
+                                                </Link>
+                                            </div>
+                                            }
+                                        </div>
+                                        <div className={'col-12 col-sm-4'}>
+                                            <div className="sm:justify-center align-center sm:flex sm:text-center">
+                                                <Link className={'bg-gray-700 py-3 px-3 block sm:inline-block btn-block border-0 d-block rounded-0 text-white hover:bg-gray-600 hover:text-white'} to={'/lernplan'}>Zurück zur Übersicht <i className="pl-1 far fa-list-alt"></i></Link>
+                                            </div>
+                                        </div>
+                                        <div className={'col-12 col-sm-4'}>
+                                            {next &&
+                                            <div className="flex justify-end justify-content-sm-end">
+                                                <Link className={'group text-light text-decoration-none flex items-center hover:text-blue-900 dark:text-blue-100 dark:hover:text-white'} to={'/lernplan/' + (next.slugadditional ? next.title.slug + '-' + next.slugadditional.slug : next.title.slug)}>
+                                                    <span className="font-bold text-center">{next.title.value}</span><i className={'fa fa-arrow-right text-gray-700 fa-2x ml-2 group-hover:text-blue-900 dark:text-blue-100 dark:group-hover:text-white'}/>
+                                                </Link>
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </Layout>
+    )
+}
+
+export default LernplanTemplate
+
+export const pageQuery = graphql`
+    query LernplanTemplate($postid: String!) {
+        site {
+            siteMetadata {
+                title
+            }
+        }
+
+        cockpitLeanplan(id: { eq: $postid } ) {
+            id
+            tags {
+                value
+            }
+#            subtitle {
+#                value
+#            }
+
+            mediabgcolor {
+                value
+            }
+
+            media {
+                value {
+                    url
+                    childImageSharp {
+                        fluid (
+                            maxWidth: 1400,
+                            quality: 80,
+
+                            jpegProgressive: true,
+                            webpQuality: 80,
+                            jpegQuality: 80
+                        ) {
+                            ...GatsbyImageSharpFluid_withWebp
+                            ...GatsbyImageSharpFluidLimitPresentationSize
+                        }
+                    }
+                }
+            }
+            lang
+            title {
+                slug
+                value
+            }
+
+            quadrant {
+                value
+            }
+
+            level {
+                value
+            }
+            status {
+                value
+            }
+   
+#            slugadditional {
+#                value
+#                slug
+#           }
+            subtitle {
+                value
+            }
+            teaser {
+                value
+            }
+            visible {
+                value
+            }
+            cockpitCreated(formatString: "DD MMMM YYYY", locale: "de-DE")
+            cockpitModified(formatString: "DD MMMM YYYY", locale: "de-DE")
+            cockpitBy
+            bodytext {
+                value {
+                    childMarkdownRemark {
+                        html
+                    }
+                }
+            }
+#            bodytext2 {
+#                value {
+#                    childMarkdownRemark {
+#                        html
+#                    }
+#                }
+#            }
+        }
+    }
+`

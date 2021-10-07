@@ -1,0 +1,87 @@
+image: node:latest
+
+cache:
+  key: "radar20.3"
+  untracked: true
+  policy: pull-push
+  paths:
+    - node_modules/
+    - .cache/
+    - public/
+
+stages:
+  - build
+  - deploy
+  - certs
+
+build:
+  stage: build
+  image: node:latest
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - public
+  before_script:
+    - yarn install --silent
+  script:
+    - ./node_modules/.bin/gatsby build --prefix-paths
+  only:
+    - tags
+    - triggers
+    - web
+  except:
+    - schedules
+
+pages:
+  stage: deploy
+  image: node:latest
+  script:
+    - ls
+  artifacts:
+    paths:
+      - public
+  only:
+    - tags
+    - triggers
+    - web
+  except:
+    - schedules
+
+certs:
+  stage: certs
+  image: ubuntu:latest
+  only:
+    - schedules
+  variables: 
+    DOMAIN: radar.niels-langlotz.com
+    GITLAB_URL: https://www.halle-development.com
+    PROJECT_ID: 404
+    CERT_FILE: /root/.acme.sh/$DOMAIN/fullchain.cer
+    KEY_FILE: /root/.acme.sh/$DOMAIN/$DOMAIN.key
+
+  script:
+    - sudo /root/.acme.sh/acme.sh --issue --accountconf /root/.acme.sh/account.conf --dns dns_hetzner -d $DOMAIN --force
+    - sleep 10
+    - sudo curl --silent --fail --show-error -X PUT --header "Private-Token:$GITLABAPI_TOKEN" --form "certificate=@$CERT_FILE" --form "key=@$KEY_FILE" $GITLAB_URL/api/v4/projects/$PROJECT_ID/pages/domains/$DOMAIN > /dev/null
+    - sleep 15
+
+# deploy_production:
+#  stage: deploy
+#  image: ubuntu:latest
+#  before_script:
+#    - apt-get update -yq
+#    - apt-get install -y rsync
+#    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#    - mkdir -p ~/.ssh
+#    - eval $(ssh-agent -s)
+#    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+#  script:
+#    - mkdir .ssh
+#    - echo "$PRODUCTION_PRIVATE_KEY" | base64 --decode > .ssh/id_rsa
+#    - chown 644 .ssh/id_rsa
+#    - rsync -avz -e "ssh -i .ssh/id_rsa -p $PRODUCTION_PORT -o StrictHostKeyChecking=no" --progress dist/* $PRODUCTION_USER@$PRODUCTION_HOST:$PRODUCTION_PATH/
+#  environment:
+#    name: production
+#    url: https://radar.typoniels.de/
+#  only:
+#    - master

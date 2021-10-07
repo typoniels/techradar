@@ -1,0 +1,7 @@
+input[type="search"].form-control.bg-brand:focus {
+  background-color: $brandcolor-one;
+}
+
+.placeholder-white::placeholder {
+  color: $light;
+}

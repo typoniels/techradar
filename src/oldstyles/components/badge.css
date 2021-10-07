@@ -1,0 +1,83 @@
+.badge {
+  color: var(--color-white);
+  display: block;
+  box-sizing: border-box;
+  padding: 0 15px;
+  text-transform: uppercase;
+  border-radius: 0  ;
+  font-size: 12px;
+  line-height: 25px;
+  height: 25px;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid var(--color-gray-normal);
+
+  &--big {
+    border-radius: 0;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    padding: 0 20px;
+  }
+
+  &--Alle {
+    background: var(--color-gray-normal);
+    border-color: var(--color-gray-normal);
+  }
+&--referenzen {
+     background: var(--color-referenzen);
+     border-color: var(--color-referenzen);
+ }
+ &--frameworks {
+    background: var(--color-green);
+    border-color: var(--color-green);
+  }
+  &--frontend {
+     background: var(--color-darkblue);
+     border-color: var(--color-darkblue);
+ }
+ &--backend {
+     background: var(--color-extensions);
+     border-color: var(--color-extensions);
+ }
+
+ &--methoden {
+     background: var(--color-pink);
+    border: none;
+ }
+  &--tools {
+    background: var(--color-marine);
+    border-color: var(--color-marine);
+  }
+    &--typo3 {
+     background: var(--color-orange);
+     border-color: var(--color-orange);
+ }
+  &--extensions {
+    background: var(--color-extensions);
+    border-color: var(--color-extensions);
+  }
+  &--design {
+   background: var(--color-pink);
+   border-color: var(--color-pink);
+ }
+ &--infobox {
+   background: var(--color-blue);
+   border-color: var(--color-blue);
+ }
+ &--sprachen {
+   background: var(--color-red);
+   border-color: var(--color-red);
+ }
+ &--services {
+     background: var(--color-yellowgreen);
+     border-color: var(--color-yellowgreen);
+ }
+&--systeme {
+     background: var(--color-red);
+     border-color: var(--color-red);
+ }
+ &--empty {
+   background: gray;
+  }
+}

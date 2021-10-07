@@ -1,0 +1,15 @@
+.blog-link {
+  text-decoration: none;
+  color: unset !important;
+  display: block;
+  position: relative;
+  word-break: break-word;
+}
+
+.blog-link:hover {
+  background: $brandcolor-one !important;
+
+  p, h4, small, span, i {
+    color: white !important;
+  }
+}

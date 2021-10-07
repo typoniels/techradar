@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    h1 {
+        @apply text-4xl;
+        @apply mb-4;
+    }
+    h2 {
+        @apply text-3xl;
+        @apply mb-4;
+    }
+    h3 {
+        @apply text-3xl;
+        @apply mb-4;
+    }
+    hr {
+        @apply my-4;
+        border-top-width: 1px;
+    }
+    ul {
+        @apply list-inside;
+        @apply list-disc;
+        @apply mb-4;
+    }
+
+    .main-content a:not([class]) {
+        color: theme('colors.yellow.900');
+    }
+
+    body.dark .main-content a:not([class]) {
+        color: theme('colors.yellow.200');
+    }
+
+    p {
+        @apply mb-3
+    }
+}

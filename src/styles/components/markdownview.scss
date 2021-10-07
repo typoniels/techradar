@@ -1,0 +1,26 @@
+.markdown-view {
+  //hyphens: auto;
+  //-moz-hyphens: auto;
+  //-webkit-hyphens: auto;
+  // opacity: .9;
+
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+  //h1, h2, h3, h4, h5, h6 {
+  //  color: #000000;
+  //}
+
+  p {
+    // text-align: justify;
+    hyphens: auto;
+
+    &:last-child {
+      margin-block: 0;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.last-p-no-mb {
+  p:last-child {
+    margin-block: 0;
+  }
+}
+
+.ml-3 {
+  margin-left: 1rem;
+}
+.ml-auto {
+  margin-left: auto;
+}
+
+.bg-secondary {
+  background-color: #262626 !important;
+}
+
+.bg-brand {
+  background: $brandcolor-one;
+}
+
+.bg-gradient-color-one {
+  background: $bg-gradient-one;
+}
+
+.bg-gradient-color-two {
+  background: $bg-gradient-two;
+}
+
+.bg-gradient-color-three {
+  background: $bg-gradient-three;
+}

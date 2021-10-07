@@ -1,0 +1,15 @@
+.projekt-listing {
+  --bs-gutter-x: 1rem !important;
+  --bs-gutter-y: 1rem !important;
+}
+
+.project-link {
+  text-decoration: none;
+
+  &:hover {
+    div {
+      @extend .bg-secondary
+
+    }
+  }
+}

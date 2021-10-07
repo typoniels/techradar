@@ -1,0 +1,67 @@
+h1, h2, h3, h4, h5 {
+  color: $brandcolor-one;
+  font-family: 'Exo 2', sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+  display: block;
+  color: lighten($brandcolor-one, 5);
+}
+
+h4 {
+  font-weight: 400;
+}
+
+h5 {
+  font-weight: 400;
+}
+
+.text-brand {
+  color: $brandcolor-one;
+}
+
+
+.text-gradient-one {
+  color: $bg-gradient-one;
+}
+
+.text-gradient-two {
+  color: $bg-gradient-two;
+}
+
+
+
+em {
+  text-decoration: underline;
+}
+
+div[itemprop=description] {
+  p {
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(#000), to(rgba(0, 0, 0, .1)));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 140%;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
+
+a {
+  word-break: break-all;
+}
+
+.link-no-wrap {
+  word-break: break-word;
+}

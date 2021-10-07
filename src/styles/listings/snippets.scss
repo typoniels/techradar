@@ -1,0 +1,51 @@
+.snippet-filter {
+  background: theme('colors.gray.50');
+  //@extend .p-3;
+  //@extend .mb-3;
+
+  &-label {
+    color: $brandcolor-one;
+  }
+
+  input {
+    // border-color: $brandcolor-one;
+  }
+
+}
+
+.snippet-listing {
+
+}
+
+// Darkmode
+body.dark {
+  .snippet-filter {
+    background: $brandcolor-one;
+
+    &-label {
+      color: theme('colors.gray.50')
+    }
+
+    input {
+      background: transparentize(#f8f9fa, .2);
+
+      &:focus {
+        box-shadow: 0 0 0 0.25rem transparentize(#f8f9fa, .6);
+      }
+    }
+  }
+  .snippet-listing {
+    .blog-link {
+      background: $brandcolor-one !important;
+      color: theme('colors.gray.50');
+
+      p, h4, small, span, i {
+        color: white !important;
+      }
+
+      &:hover {
+        background: darken($brandcolor-one, 6) !important;
+      }
+    }
+  }
+}

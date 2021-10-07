@@ -1,0 +1,7 @@
+.headline {
+  margin: 0;
+  padding: 0;
+  color: var(--color-darkblue);
+  font-family: 'Francois One', sans-serif;
+  font-size: 30px;
+}

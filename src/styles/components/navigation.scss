@@ -1,0 +1,27 @@
+// Darkmode
+body.dark {
+  .navbar-light .navbar-brand {
+    outline: transparent auto 0;
+  }
+}
+
+
+.navbar-light .navbar-brand {
+  outline: none !important;
+}
+
+.navigation {
+  z-index: 2;
+  position: relative;
+}
+
+.navbar-toggler {
+  border-radius: 0;
+  outline: none !important;
+}
+
+.nl-logo {
+  background: #03A9F4;
+  background: linear-gradient(to left, $bg-gradient-one 5%, $bg-gradient-two);
+  color: white
+}
