@@ -6,7 +6,7 @@ const Hero = ({ data, heroHeight }) => {
   return (
     <div className="nl-hero bg-white dark:bg-blue-980">
         {(data !== null) &&
-            <Img className={'image-index'} imgStyle={{objectFit: "cover", objectPosition:"top"}} style={{maxHeight: heroMaxHeight + 'px'}} fluid={data.value.childImageSharp.fluid} />
+            <Img critical className={'image-index'} imgStyle={{objectFit: "cover", objectPosition:"top"}} style={{maxHeight: heroMaxHeight + 'px'}} fluid={data.value.childImageSharp.fluid} />
         }
     </div>
   )
