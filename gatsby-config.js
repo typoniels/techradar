@@ -66,7 +66,7 @@ module.exports = {
       resolve: "gatsby-plugin-matomo",
       options: {
         siteId: "2",
-        matomoUrl: "https://matomo.typoniels.eu",
+        matomoUrl: "https://matomo.typoniels.de",
         siteUrl: "https://www.niels-langlotz.com",
       },
     },

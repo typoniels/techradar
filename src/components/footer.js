@@ -9,7 +9,7 @@ const Footer = () => {
     const socialMediaLinks = [
         {icon: 'fas fa-globe-europe', link: 'https://www.niels-langlotz.com'},
         {icon: 'far fa-lightbulb', link: 'https://wissen.typoniels.de'},
-        {icon: 'fab fa-gitlab', link: 'https://www.halle-development.com/explore'},
+        {icon: 'fab fa-gitlab', link: 'https://gitlab.typoniels.de/explore'},
         {icon: 'fab fa-github', link: 'https://github.com/typoniels'},
         {icon: 'fab fa-instagram', link: 'https://www.instagram.com/typoniels/'},
         {icon: 'fab fa-hackerrank', link: 'https://app.hackthebox.eu/profile/578640'}
