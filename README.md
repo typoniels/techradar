@@ -11,3 +11,5 @@ A static site generator for my Technology Radar based on ReactJS
 COCKPIT_Token=************************
 COCKPIT_BaseUrl************************
 ```
+
+© 2022
